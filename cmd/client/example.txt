@@ -1,0 +1,28 @@
+//error
+test `Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]` with rule1;
+
+// success 
+set project5-5-applog ` {"dir": "/Users/xiaopengdeng/Documents/workspace/go-project/src/logauditer/cmd/monitdir", "systemType": "server", "device": "x86-sever", "filePattern": "(\\w+_\\w+.log)", "linePrefixPattern": "(\\w+  \\d \\d+:\\d+:\\d+ \\w+ \\w+: \\w+     \\w+\\/\\d+        \\d+-\\d+-\\d+ \\d+:\\d+ \\(\\d+.\\d+.\\d+.\\d+\\) \\[\\d+\\]:)", "columnPattern": {"UserName": 6, "IpAddr": "(\\(\\d+.\\d+.\\d+.\\d+\\))", "State": "(\\[\\d\\])", "DateTime": "(\\w+\\  \\d\\ \\d+:\\d+:\\d+)"} } `;
+
+set project-tx-serverlog ` {"dir": "/Users/xiaopengdeng/Documents/workspace/go-project/src/logauditer/cmd/monitdir", "systemType": "server", "device": "x86-sever", "filePattern": "(\\w+_\\w+.log)", "linePrefixPattern": "(\\w+  \\d \\d+:\\d+:\\d+ \\w+ \\w+: \\w+     \\w+\\/\\d+        \\d+-\\d+-\\d+ \\d+:\\d+ \\(\\d+.\\d+.\\d+.\\d+\\) \\[\\d+\\]:)", "columnPattern": {"UserName": 6, "IpAddr": "(\\(\\d+.\\d+.\\d+.\\d+\\))", "State": "(\\[\\d\\])", "DateTime": "(\\w+\\  \\d\\ \\d+:\\d+:\\d+)"} } `;
+
+set 新能源服务器日志 ` {"dir": "/Users/xiaopengdeng/Documents/workspace/go-project/src/logauditer/cmd/monitdir", "systemType": "server", "device": "x86-sever", "filePattern": "(\\w+_\\w+.log)", "linePrefixPattern": "(\\w+  \\d \\d+:\\d+:\\d+ \\w+ \\w+: \\w+     \\w+\\/\\d+        \\d+-\\d+-\\d+ \\d+:\\d+ \\(\\d+.\\d+.\\d+.\\d+\\) \\[\\d+\\]:)", "columnPattern": {"UserName": 6, "IpAddr": "(\\(\\d+.\\d+.\\d+.\\d+\\))", "State": "(\\[\\d\\])", "DateTime": "(\\w+\\  \\d\\ \\d+:\\d+:\\d+)"} } `;
+
+set 新エネルギーサーバーログ ` {"dir": "/Users/xiaopengdeng/Documents/workspace/go-project/src/logauditer/cmd/monitdir", "systemType": "server", "device": "x86-sever", "filePattern": "(\\w+_\\w+.log)", "linePrefixPattern": "(\\w+  \\d \\d+:\\d+:\\d+ \\w+ \\w+: \\w+     \\w+\\/\\d+        \\d+-\\d+-\\d+ \\d+:\\d+ \\(\\d+.\\d+.\\d+.\\d+\\) \\[\\d+\\]:)", "columnPattern": {"UserName": 6, "IpAddr": "(\\(\\d+.\\d+.\\d+.\\d+\\))", "State": "(\\[\\d\\])", "DateTime": "(\\w+\\  \\d\\ \\d+:\\d+:\\d+)"} } `;
+
+set rule1 ` {"dir": "/Users/xiaopengdeng/Documents/workspace/go-project/src/logauditer/cmd/monitdir", "systemType": "server", "device": "x86-sever", "filePattern": "(\\w+_\\w+.log)", "linePrefixPattern": "(\\w+  \\d \\d+:\\d+:\\d+ \\w+ \\w+: \\w+     \\w+\\/\\d+        \\d+-\\d+-\\d+ \\d+:\\d+ \\(\\d+.\\d+.\\d+.\\d+\\) \\[\\d+\\]:)", "columnPattern": {"UserName": 6, "IpAddr": "(\\(\\d+.\\d+.\\d+.\\d+\\))", "State": "(\\[\\d\\])", "DateTime": "(\\w+\\  \\d\\ \\d+:\\d+:\\d+)"} } `;
+
+test `Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]` with rule1;
+test `Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]` with project5-5-applog;
+test `Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]` with rule1;
+
+cd /Users/xiaopengdeng/Documents/workspace/go-project/src/logauditer/cmd/monitdir
+mkdir {a,b,c}
+
+echo "Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]" >> linux-x0.log
+echo "Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]" >> a/linux-x1.log
+echo "Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]" >> b/linux-x2.log
+echo "Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]" >> c/linux-x3.log
+
+
+test `Jan  7 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]` with yy;

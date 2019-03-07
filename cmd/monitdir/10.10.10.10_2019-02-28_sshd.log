@@ -1,0 +1,40 @@
+Feb 28 08:54:22 x-men sshd[297017]: Accepted password for root from 10.10.4.23 port 55655 ssh2
+Feb 28 08:54:22 x-men sshd[297017]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Feb 28 09:37:30 x-men sshd[299699]: Accepted password for etsuser from 10.10.3.102 port 56889 ssh2
+Feb 28 09:37:30 x-men sshd[299699]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 09:39:56 x-men sshd[299883]: Accepted password for etsuser from 10.10.3.102 port 57070 ssh2
+Feb 28 09:39:56 x-men sshd[299883]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 09:41:52 x-men sshd[300017]: Accepted password for root from 10.10.4.23 port 57591 ssh2
+Feb 28 09:41:52 x-men sshd[300017]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Feb 28 10:35:55 x-men sshd[305970]: Accepted password for etsuser from 10.10.3.128 port 53691 ssh2
+Feb 28 10:35:56 x-men sshd[305970]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 12:29:21 x-men sshd[300017]: error: Received disconnect from 10.10.4.23 port 57591:0:
+Feb 28 12:29:21 x-men sshd[300017]: Disconnected from 10.10.4.23 port 57591
+Feb 28 12:29:21 x-men sshd[300017]: pam_unix(sshd:session): session closed for user root
+Feb 28 12:29:22 x-men sshd[297017]: error: Received disconnect from 10.10.4.23 port 55655:0:
+Feb 28 12:29:22 x-men sshd[297017]: Disconnected from 10.10.4.23 port 55655
+Feb 28 12:29:22 x-men sshd[297017]: pam_unix(sshd:session): session closed for user root
+Feb 28 13:38:19 x-men sshd[305970]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 13:40:47 x-men sshd[318087]: Accepted password for etsuser from 10.10.3.128 port 63776 ssh2
+Feb 28 13:40:47 x-men sshd[318087]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 13:43:20 x-men sshd[318271]: Accepted password for etsuser from 10.10.3.128 port 63807 ssh2
+Feb 28 13:43:20 x-men sshd[318271]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 13:48:44 x-men sshd[318271]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 13:57:20 x-men sshd[318087]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 14:28:13 x-men sshd[320925]: Accepted password for etsuser from 10.10.3.102 port 59640 ssh2
+Feb 28 14:28:13 x-men sshd[320925]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 14:31:05 x-men sshd[320925]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 14:31:06 x-men sshd[321138]: Accepted password for etsuser from 10.10.3.102 port 59809 ssh2
+Feb 28 14:31:06 x-men sshd[321138]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 14:33:07 x-men sshd[321138]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 14:33:10 x-men sshd[321299]: Accepted password for etsuser from 10.10.3.102 port 59982 ssh2
+Feb 28 14:33:11 x-men sshd[321299]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 14:38:30 x-men sshd[321299]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 14:38:31 x-men sshd[321780]: Accepted password for etsuser from 10.10.3.102 port 60348 ssh2
+Feb 28 14:38:31 x-men sshd[321780]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 14:40:32 x-men sshd[321780]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 14:40:33 x-men sshd[321945]: Accepted password for etsuser from 10.10.3.102 port 60465 ssh2
+Feb 28 14:40:34 x-men sshd[321945]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)
+Feb 28 14:41:20 x-men sshd[321945]: pam_unix(sshd:session): session closed for user etsuser
+Feb 28 14:41:21 x-men sshd[322030]: Accepted password for etsuser from 10.10.3.102 port 60511 ssh2
+Feb 28 14:41:21 x-men sshd[322030]: pam_unix(sshd:session): session opened for user etsuser by (uid=0)

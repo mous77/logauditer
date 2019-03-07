@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+
+package api;
+
+option go_package = "api";
+
+message ExecuteRequest{
+    bytes command = 1 [(gogoproto.customtype) = "logauditer/raw.Raw", (gogoproto.nullable) = false];
+}
+
+//CommandExecutionReply describes all available replies.
+enum CommandExecutionReply {
+    option (gogoproto.goproto_enum_prefix) = false;
+    NIL = 0 [(gogoproto.enumvalue_customname) = "NilCommandReply"];
+    OK = 1 [(gogoproto.enumvalue_customname) = "OkCommandReply"];
+    STRING = 2 [(gogoproto.enumvalue_customname) = "StringCommandReply"];
+    SLICE = 3 [(gogoproto.enumvalue_customname) = "SliceCommandReply"];
+    ERR = 4 [(gogoproto.enumvalue_customname) = "ErrCommandReply"];
+}
+
+message ExecuteCommandResponse {
+    CommandExecutionReply reply = 1;
+    string item = 2;
+    repeated string items = 3;
+}
+
+service LogAuditer{
+	rpc Execute(ExecuteRequest) returns (ExecuteCommandResponse);
+}
