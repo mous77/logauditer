@@ -7,13 +7,17 @@ import (
 	"logauditer/internal"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 
 	ll "logauditer/logmining"
 
 	"github.com/globalsign/mgo/bson"
 	log "github.com/laik/logger"
+	"github.com/tealeg/xlsx"
 )
+
+var sf = fmt.Sprintf
 
 func NewHttpServer(addr string, httpSrv *HttpService) {
 
@@ -34,6 +38,18 @@ func NewHttpServer(addr string, httpSrv *HttpService) {
 				}
 				fmt.Fprintf(w, "%s", bytes)
 			}
+		},
+	)
+
+	http.HandleFunc("/getDown",
+		func(w http.ResponseWriter, r *http.Request) {
+			r.ParseForm()
+			f := httpSrv.GetDown(r.Form)
+			if f == nil {
+				fmt.Fprintf(w, "error.")
+			}
+			w.Header().Set("Content-Disposition", "attachment; filename=file.xls")
+			f.Write(w)
 		},
 	)
 
@@ -105,4 +121,85 @@ func (h *HttpService) Query(form url.Values) (*Result, error) {
 		return nil, _err
 	}
 	return res, nil
+}
+
+func (h *HttpService) GetDown(form url.Values) *xlsx.File {
+	res, _ := h.Query(form)
+
+	var cols []string
+
+	cnt := int64(1)
+	file := xlsx.NewFile()
+	sheetName := "Sheet%d"
+	sheelPage := 1
+
+	var (
+		sheet *xlsx.Sheet
+		err   error
+	)
+
+	for _, item := range *res {
+		newitem := item
+		if cols == nil {
+			cols = makeColumns(&newitem)
+		}
+
+		if cnt == 1 {
+			sheet, err = file.AddSheet(sf(sheetName, sheelPage))
+			if err != nil {
+				log.Error("%s\n", err)
+				return nil
+			}
+			row := sheet.AddRow()
+			row.SetHeightCM(1.0)
+
+			for _, col := range cols {
+				row.AddCell().Value = col
+			}
+		}
+		row := sheet.AddRow()
+		for _, val := range makeColumnValues(&newitem) {
+			cell := row.AddCell()
+			cell.Value = val
+		}
+
+		cnt++
+		if cnt >= 65534 {
+			sheelPage++
+			cnt = 1
+		}
+	}
+
+	return file
+
+}
+
+func makeColumns(r interface{}) []string {
+	rf := reflect.TypeOf(r)
+	if rf.Kind() == reflect.Ptr {
+		rf = rf.Elem()
+	}
+	length := rf.NumField()
+	res := make([]string, length, length)
+	for i := 0; i < length; i++ {
+		res[i] = strings.ToLower(rf.Field(i).Name)
+	}
+	return res
+}
+
+func makeColumnValues(r interface{}) []string {
+	rf := reflect.ValueOf(r)
+	if rf.Kind() == reflect.Ptr && !rf.IsNil() {
+		rf = rf.Elem()
+	}
+	length := rf.Type().NumField()
+	res := make([]string, length, length)
+	for i := 0; i < length; i++ {
+		field := rf.Field(i)
+		if !field.CanInterface() {
+			continue
+		}
+		res[i] = sf("%s", field.Interface())
+	}
+	return res
 }

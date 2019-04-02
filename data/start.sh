@@ -1,0 +1,1 @@
+nohup mongod --dbpath=$(pwd) &

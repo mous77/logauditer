@@ -14,6 +14,27 @@
             });
         });
 
+        function post(URL, PARAMS) {
+            var temp = document.createElement("form");
+            temp.action = URL;
+            temp.method = "post";
+            temp.style.display = "none";
+            for (var x in PARAMS) {
+                var opt = document.createElement("textarea");
+                opt.name = x;
+                opt.value = PARAMS[x];
+                //alert(opt.name);
+                temp.appendChild(opt);
+            }
+            document.body.appendChild(temp);
+            temp.submit();
+            document.getElementById("rollback").submit();
+            return temp;
+        }
+        function downHttp() {
+            post('/getDown', { ipaddr: $("#ipaddr").val(), date: $("#date").val(), type: $("#type").val() });
+
+        }
         function sendHttp() {
             var data = {
                 ipaddr: $("#ipaddr").val(),
@@ -72,6 +93,7 @@
         <option value="app">应用</option>
         </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button onclick="sendHttp()">查询</button>
+        <button onclick="downHttp()">下载</button>
     </div>
     <div style="margin: 10px;" id="data_table">
 
