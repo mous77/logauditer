@@ -66,8 +66,11 @@ desc {rule}; // 查看规则明细配置
 list rule; // 查看运行状态
 ```
 
-* 测试写入文件
+* 访问Web
+http://localhost:80
 
+
+* 测试写入文件
 ```shell
 echo "Jan  1 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]" >> 10.10.2.104_2018-12-04_RawStore.log
 echo "Jan  2 14:21:09 mongo521 root: root     pts/0        2019-01-07 14:19 (10.10.3.133) [432662]: scp -r mongodb-linux-x86_64-rhel70-4.0.2.tgz root@10.10.3.41:/root [1]" >> 10.10.2.104_2018-12-04_RawStore1.log
