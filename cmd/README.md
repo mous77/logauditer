@@ -4,24 +4,24 @@
 
 * 远程日志格式模式
 
-| 文件      |      表达式    |  
-|----------|:-------------:|
-|10.10.2.104_2018-12-04_DianXin-route.log |  (\\d+.\\d+.\\d+.\\d+_\\d+-route.log)|
-|10.10.4.32_2018-12-04_sshd.log  |      (\\d+.\\d+.\\d+.\\d+_\\d+_sshd.log) |
+| 文件                                     |                表达式                |
+| ---------------------------------------- | :----------------------------------: |
+| 10.10.2.104_2018-12-04_DianXin-route.log | (\\d+.\\d+.\\d+.\\d+_\\d+-route.log) |
+| 10.10.4.32_2018-12-04_sshd.log           | (\\d+.\\d+.\\d+.\\d+_\\d+_sshd.log)  |
 
 * server编译
 
 ```shell
 # 启动服务需依赖mongodb
 # dburl: "127.0.0.1:27017"
-cd $GOPATH/src/cmd/server
+cd $GOPATH/src/logauditer/server
 make
 ```
 
 * client编译
 
 ```shell
-cd $GOPATH/src/cmd/client
+cd $GOPATH/src/logauditer/client
 make
 ```
 

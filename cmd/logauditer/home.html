@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Chat Example</title>
+    <script src="/static/jquery-1.11.1.min.js"></script>
+    <script src="/static/laydate/laydate.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#date' //指定元素
+                , type: 'date'
+            });
+        });
+
+        function post(URL, PARAMS) {
+            var temp = document.createElement("form");
+            temp.action = URL;
+            temp.method = "post";
+            temp.style.display = "none";
+            for (var x in PARAMS) {
+                var opt = document.createElement("textarea");
+                opt.name = x;
+                opt.value = PARAMS[x];
+                //alert(opt.name);
+                temp.appendChild(opt);
+            }
+            document.body.appendChild(temp);
+            temp.submit();
+            document.getElementById("rollback").submit();
+            return temp;
+        }
+        function downHttp() {
+            post('/getDown', { ipaddr: $("#ipaddr").val(), date: $("#date").val(), type: $("#type").val() });
+
+        }
+        function sendHttp() {
+            var data = {
+                ipaddr: $("#ipaddr").val(),
+                date: $("#date").val(),
+                type: $("#type").val()
+            };
+            $("#data_table").html("");
+            $.ajax({
+                type: "GET",
+                url: "/getInfo",
+                traditional: true,
+                // contentType: "application/json",  
+                // data: JSON.stringify(data),  
+                data: data,
+                success: function (msg) {
+                    var msgObject = JSON.parse(msg);
+                    if (msgObject) {
+
+                        var html_str = "<table border='1'><tr><th>Host</th><th>Date</th><th>Device</th><th>SystemType</th><th>DateTime</th><th>IpAddr</th><th>Operation</th><th>State</th><th>UserName</th></tr>";
+                        for (var i = 0; i < msgObject.length; i++) {
+                            html_str = html_str + "<tr><td>" + msgObject[i].Host + "</td><td>" + msgObject[i].Date + "</td><td>" + msgObject[i].Device + "</td><td>" + msgObject[i].SystemType + "</td><td>" + msgObject[i].DateTime + "</td><td>" + msgObject[i].IpAddr + "</td><td>" + msgObject[i].Operation + "</td><td>" + msgObject[i].State + "</td><td>" + msgObject[i].UserName + "</td></tr>";
+                        }
+                        html_str = html_str + "</table>";
+                        $("#data_table").html(html_str);
+                        $("#result_code").val(msgObject.code);
+                        $("#result_message").val(msgObject.message);
+                        $("#result_data").val(msgObject.data);
+                    }
+                }
+            });
+        }
+    </script>
+    <style type="text/css">
+        html {
+            overflow: auto;
+        }
+
+        body {
+            overflow: auto;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: 10px;">
+        <a>主机：</a>&nbsp;&nbsp;<input id="ipaddr" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a>时间：</a>&nbsp;&nbsp;<input id="date" class="demo-input"
+            placeholder="请选择日期" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a>类型：</a>&nbsp;&nbsp;<select id="type" class="demo-input" />
+        <option value="server">服务器</option>
+        <option value="switch">交换机</option>
+        <option value="app">应用</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="sendHttp()">查询</button>
+        <button onclick="downHttp()">下载</button>
+    </div>
+    <div style="margin: 10px;" id="data_table">
+
+    </div>
+</body>
+
+</html>
